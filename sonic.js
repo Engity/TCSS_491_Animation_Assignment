@@ -9,9 +9,9 @@ class Sonic {
         this.animations = new Animator(this.spritesheet, 30, 700, this.width, this.height, 4, 0.08, 18, false, true);
 
         //Speed for x axis
-        this.dx = 200;
+        this.dx = 900;
         //Speed for the y axis
-        this.dy = 100;
+        this.dy = 800;
         this.speed = Math.sqrt(this.dx ** 2 + this.dy ** 2);
         this.BC = new BoundingCircle(x, y, this.height / 2);
     }
@@ -34,12 +34,10 @@ class Sonic {
         //Check Out of bounds
         if (this.x + this.width >= params.CANVAS_SIZE || this.x < 0){
             this.dx *= -1;
-            
         }
 
         if (this.y + this.height >= params.CANVAS_SIZE || this.y < 0){
-            this.dy *= -1;
-            
+            this.dy *= -1;   
         }
         this.speed = Math.sqrt(this.dx ** 2 + this.dy ** 2);
 

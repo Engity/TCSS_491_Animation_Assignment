@@ -13,7 +13,6 @@ ASSET_MANAGER.downloadAll(() => {
     //Add main character
     let mainChar = new Sonic(gameEngine, 0, 0);
     gameEngine.addEntity(mainChar);
-    gameEngine.addBorderToWorld(gameEngine.entities);
 
 	gameEngine.start();
 });
