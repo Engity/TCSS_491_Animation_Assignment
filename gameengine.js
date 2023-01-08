@@ -21,10 +21,29 @@ class GameEngine {
         };
     };
 
+    /**
+     * Add border
+     * @param {*} entityList List of entity to add border to
+     */
+    addBorderToWorld = (entityList) => {
+        //Adding actual border
+        let northWall = new Wall(this, 0, 0, 0, params.CANVAS_SIZE);
+        let eastWall = new Wall(this, 0, params.CANVAS_SIZE, params.CANVAS_SIZE, params.CANVAS_SIZE);
+        let southWall = new Wall(this, params.CANVAS_SIZE, 0, params.CANVAS_SIZE, params.CANVAS_SIZE);
+        let westWall = new Wall(this, 0, 0, params.CANVAS_SIZE, 0);
+
+        entityList.push(northWall); 
+        entityList.push(eastWall); 
+        entityList.push(southWall); 
+        entityList.push(westWall); 
+    }
+
     init(ctx) {
         this.ctx = ctx;
         this.startInput();
         this.timer = new Timer();
+
+        this.addBorderToWorld(this.entities);
     };
 
     start() {
