@@ -9,9 +9,9 @@ class Sonic {
         this.animations = new Animator(this.spritesheet, 30, 700, this.width, this.height, 4, 0.08, 18, false, true);
 
         //Speed for x axis
-        this.dx = 600;
+        this.dx = 900;
         //Speed for the y axis
-        this.dy = 550;
+        this.dy = 610;
         this.speed = Math.sqrt(this.dx ** 2 + this.dy ** 2);
         this.BC = new BoundingCircle(x, y, this.height / 2);
     }
@@ -32,15 +32,36 @@ class Sonic {
         this.y += this.dy * this.game.clockTick;
 
         //Check Out of bounds
-        if (this.x + this.width >= params.CANVAS_SIZE || this.x < 0){
-            this.dx *= -1;
+        // if (this.x + this.width >= params.CANVAS_SIZE || this.x < 0){
+        //     //this.dx *= -1;//Bouncing
            
+        // }
+
+        // if (this.y + this.height >= params.CANVAS_SIZE || this.y < 0){
+        //     //this.dy *= -1;//Bouncing  
+            
+        // }
+
+        if (this.x + this.width >= params.CANVAS_SIZE){
+            //this.dx *= -1;//Bouncing
+           this.x = 0;
+           //this.y = params.CANVAS_SIZE - this.y;
+        }
+        if (this.x < 0){
+            this.x = params.CANVAS_SIZE - this.width;
+            //this.y = params.CANVAS_SIZE - this.y;
         }
 
-        if (this.y + this.height >= params.CANVAS_SIZE || this.y < 0){
-            this.dy *= -1;   
-            
+        if (this.y + this.height >= params.CANVAS_SIZE){
+            //this.dx *= -1;//Bouncing
+           this.y = 0;
+           //this.x = params.CANVAS_SIZE - this.x;
         }
+        if (this.y < 0){
+            this.y = params.CANVAS_SIZE - this.height;
+            //this.x = params.CANVAS_SIZE - this.x;
+        }
+
         this.speed = Math.sqrt(this.dx ** 2 + this.dy ** 2);
         
         //Always keep object in frame
